@@ -1,0 +1,10 @@
+[package]
+name = "cec2014"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "cec2014"
+path = "src/lib.rs"
+
+[dependencies]
