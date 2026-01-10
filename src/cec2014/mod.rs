@@ -8,4 +8,5 @@ pub mod hybrid;
 pub mod multimodal;
 pub mod unimodal;
 
+pub use cec14::Cec14;
 pub use cec14_helper::Cec14Helper;

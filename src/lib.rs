@@ -1,6 +1,6 @@
 pub mod cec2014;
 
-pub use cec2014::Cec14Helper;
+pub use cec2014::{Cec14, Cec14Helper};
 
 pub use cec2014::unimodal::{
     rotated_high_conditioned_elliptic as ellipse,
