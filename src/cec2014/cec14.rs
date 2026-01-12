@@ -1,6 +1,8 @@
 use crate::cec2014::cec14_function::Cec14Function;
 use crate::cec2014::cec14_helper::Cec14Helper;
 
+const AVAILABLE_DIM: [usize; 6] = [2,10,20,30,50,100];
+
 pub struct Cec14 {
     problem: Cec14Function,
     dim: usize,
@@ -9,15 +11,25 @@ pub struct Cec14 {
     s: Vec<usize>
 }
 
+impl Default for Cec14 {
+    fn default() -> Self {
+        Self {
+            problem: Cec14Function::F1,
+            dim: 10,
+            o: Vec::new(),
+            m: Vec::new(),
+            s: Vec::new(),
+        }
+    }
+}
+
 #[allow(unused)]
 impl Cec14 {
     pub fn new(problem: Cec14Function, dim: usize) -> Self {
         let mut cec = Cec14 {
             problem,
             dim,
-            o: Vec::new(),
-            m: Vec::new(),
-            s: Vec::new(),
+            ..Self::default()
         };
 
         cec.load_input_data(&Cec14Helper::default());
@@ -26,7 +38,7 @@ impl Cec14 {
     }
 
     fn load_input_data(&mut self, helper: &Cec14Helper) {
-        if !(self.dim==2||self.dim==10||self.dim==20||self.dim==30||self.dim==50||self.dim==100)
+        if !AVAILABLE_DIM.contains(&self.dim)
         {
             panic!("Test functions are only defined for D=2,10,20,30,50,100.");
         }
@@ -43,6 +55,10 @@ impl Cec14 {
 
     #[allow(dead_code)]
     pub fn set_dim(&mut self, dim: usize) {
+        if !AVAILABLE_DIM.contains(&dim)
+        {
+            panic!("Test functions are only defined for D=2,10,20,30,50,100.");
+        }
         self.dim = dim;
         self.load_input_data(&Cec14Helper::default());
     }
