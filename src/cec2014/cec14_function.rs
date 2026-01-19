@@ -1,6 +1,7 @@
 use crate::cec2014::multimodal::{shifted_rastrigin, shifted_rotated_ackley, shifted_rotated_escaffer6, shifted_rotated_expanded_griewank_rosenbrock, shifted_rotated_griewank, shifted_rotated_happy_cat, shifted_rotated_hgbat, shifted_rotated_katsuura, shifted_rotated_rastrigin, shifted_rotated_rosenbrock, shifted_rotated_schwefel, shifted_rotated_weierstrass, shifted_schwefel};
 use crate::cec2014::unimodal::{rotated_bent_cigar, rotated_discus, rotated_high_conditioned_elliptic};
 use crate::{cf01, cf02, cf03, cf04, cf05, cf06, cf07, cf08, hf01, hf02, hf03, hf04, hf05, hf06};
+use std::convert::TryFrom;
 
 #[derive(Clone, Debug, PartialEq)]
 pub enum Cec14Function {
@@ -74,5 +75,46 @@ impl Cec14Function {
 
     pub fn index(&self) -> usize {
         self.clone() as usize
+    }
+}
+
+
+impl TryFrom<i32> for Cec14Function {
+    type Error = ();
+
+    fn try_from(value: i32) -> Result<Self, Self::Error> {
+        match value {
+            1 => Ok(Cec14Function::F1),
+            2 => Ok(Cec14Function::F2),
+            3 => Ok(Cec14Function::F3),
+            4 => Ok(Cec14Function::F4),
+            5 => Ok(Cec14Function::F5),
+            6 => Ok(Cec14Function::F6),
+            7 => Ok(Cec14Function::F7),
+            8 => Ok(Cec14Function::F8),
+            9 => Ok(Cec14Function::F9),
+            10 => Ok(Cec14Function::F10),
+            11 => Ok(Cec14Function::F11),
+            12 => Ok(Cec14Function::F12),
+            13 => Ok(Cec14Function::F13),
+            14 => Ok(Cec14Function::F14),
+            15 => Ok(Cec14Function::F15),
+            16 => Ok(Cec14Function::F16),
+            17 => Ok(Cec14Function::F17),
+            18 => Ok(Cec14Function::F18),
+            19 => Ok(Cec14Function::F19),
+            20 => Ok(Cec14Function::F20),
+            21 => Ok(Cec14Function::F21),
+            22 => Ok(Cec14Function::F22),
+            23 => Ok(Cec14Function::F23),
+            24 => Ok(Cec14Function::F24),
+            25 => Ok(Cec14Function::F25),
+            26 => Ok(Cec14Function::F26),
+            27 => Ok(Cec14Function::F27),
+            28 => Ok(Cec14Function::F28),
+            29 => Ok(Cec14Function::F29),
+            30 => Ok(Cec14Function::F30),
+            _ => Err(()),
+        }
     }
 }
