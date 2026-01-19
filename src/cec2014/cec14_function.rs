@@ -2,7 +2,7 @@ use crate::cec2014::multimodal::{shifted_rastrigin, shifted_rotated_ackley, shif
 use crate::cec2014::unimodal::{rotated_bent_cigar, rotated_discus, rotated_high_conditioned_elliptic};
 use crate::{cf01, cf02, cf03, cf04, cf05, cf06, cf07, cf08, hf01, hf02, hf03, hf04, hf05, hf06};
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub enum Cec14Function {
     F1 = 1, // Rotated High Conditioned Elliptic
     F2 = 2, // Rotated Bent Cigar

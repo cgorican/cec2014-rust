@@ -37,17 +37,29 @@ impl Cec14 {
         cec
     }
 
-    fn load_input_data(&mut self, helper: &Cec14Helper) {
-        if !AVAILABLE_DIM.contains(&self.dim)
+    pub fn problem_is_valid(problem: Cec14Function, dim: usize) -> bool {
+        if !AVAILABLE_DIM.contains(&dim)
         {
-            panic!("Test functions are only defined for D=2,10,20,30,50,100.");
+            return false;
         }
-        let problem_index = self.problem.index();
-        if self.dim == 2 && ((problem_index >= 17 && problem_index <= 22) || (problem_index >= 29 && problem_index <= 30))
+        let problem_index = problem.index();
+        if dim == 2 && ((problem_index >= 17 && problem_index <= 22) || (problem_index >= 29 && problem_index <= 30))
         {
-            panic!("Error: hf01,hf02,hf03,hf04,hf05,hf06,cf07,cf08 are NOT defined for D=2.");
+            return false;
+        }
+        true
+    }
+
+    fn load_input_data(&mut self, helper: &Cec14Helper) {
+        if !Self::problem_is_valid(self.problem.clone(), self.dim) {
+            if !AVAILABLE_DIM.contains(&self.dim) {
+                panic!("Test functions are only defined for D=2,10,20,30,50,100.");
+            } else {
+                panic!("Error: hf01,hf02,hf03,hf04,hf05,hf06,cf07,cf08 are NOT defined for D=2.");
+            }
         }
 
+        let problem_index = self.problem.index();
         self.o = helper.load_shift_vector(problem_index, self.dim);
         self.m = helper.load_rotation_matrix(problem_index, self.dim);
         self.s = helper.load_shuffle_vector(problem_index, self.dim);
@@ -62,6 +74,9 @@ impl Cec14 {
     }
 
     pub fn set_problem(&mut self, problem: Cec14Function, dim: usize) {
+        if (self.dim == dim && problem == self.problem) || !Self::problem_is_valid(problem.clone(), dim) {
+            return;
+        }
         self.dim = dim;
         self.problem = problem;
         self.load_input_data(&Cec14Helper::default());
