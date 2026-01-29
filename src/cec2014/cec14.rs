@@ -8,7 +8,9 @@ pub struct Cec14 {
     dim: usize,
     o: Vec<f64>,
     m: Vec<f64>,
-    s: Vec<usize>
+    s: Vec<usize>,
+    lb: f64,
+    ub: f64,
 }
 
 impl Default for Cec14 {
@@ -19,6 +21,8 @@ impl Default for Cec14 {
             o: Vec::new(),
             m: Vec::new(),
             s: Vec::new(),
+            lb: -100.0,
+            ub: 100.0,
         }
     }
 }
@@ -65,11 +69,11 @@ impl Cec14 {
         self.s = helper.load_shuffle_vector(problem_index, self.dim);
     }
 
-    pub fn get_dim(&self) -> usize {
+    pub fn dim(&self) -> usize {
         self.dim
     }
 
-    pub fn get_problem(&self) -> Cec14Function {
+    pub fn problem(&self) -> Cec14Function {
         self.problem.clone()
     }
 
@@ -90,5 +94,13 @@ impl Cec14 {
         let score = self.problem.eval(values, &self.o, &self.m, &self.s);
 
         score * (self.problem.index() as f64) * 100.0
+    }
+
+    pub fn lb(&self) -> f64 {
+        self.lb
+    }
+
+    pub fn ub(&self) -> f64 {
+        self.ub
     }
 }
