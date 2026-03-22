@@ -78,7 +78,9 @@ impl Cec14 {
     }
 
     pub fn set_problem(&mut self, problem: Cec14Function, dim: usize) {
-        if (self.dim == dim && problem == self.problem) || !Self::problem_is_valid(problem.clone(), dim) {
+        if !Self::problem_is_valid(problem.clone(), dim) {
+            return;
+        } else if (self.dim == dim && problem == self.problem) && (!self.s.is_empty() || !self.m.is_empty() || !self.o.is_empty()) {
             return;
         }
         self.dim = dim;
