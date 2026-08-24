@@ -1,0 +1,14 @@
+src/cec2014/hybrid.rs
+  h_2f640d0d28e031 15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "917a5fe1271ff6c443bf43db3215f0ce51eff7c9",
+  "prompts": {},
+  "humans": {
+    "h_2f640d0d28e031": {
+      "author": "Crt Gorican <crt.gorican@gmail.com>"
+    }
+  }
+}
