@@ -12,6 +12,7 @@ pub fn hf01(values: &[f64], o: &[f64], m: &[f64], s: &[usize], s_flag: bool, r_f
     Cec14Helper::shift_sub(&mut x, o, s_flag);
     x = Cec14Helper::rotate(&x, m, r_flag);
     let x = Cec14Helper::shuffle(&x, s, sh_flag);
+    #[cfg(debug_assertions)]
     println!("Shuffled:\n{:?}", x);
 
     let mut result: f64 = shifted_rotated_schwefel(&x[..p[0]], o, m, false, false);
