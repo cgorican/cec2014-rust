@@ -1,0 +1,18 @@
+src/cec2014/cec14.rs
+  h_2f640d0d28e031 98
+src/cec2014/tests/eval.rs
+  h_2f640d0d28e031 1-71
+src/cec2014/tests/mod.rs
+  h_2f640d0d28e031 4-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9fa5d264c8cc8691ffe260fd32c3ae85f8e47970",
+  "prompts": {},
+  "humans": {
+    "h_2f640d0d28e031": {
+      "author": "Crt Gorican <crt.gorican@gmail.com>"
+    }
+  }
+}
