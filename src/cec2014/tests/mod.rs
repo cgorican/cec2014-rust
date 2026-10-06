@@ -1,6 +1,8 @@
 #[cfg(test)]
 mod composition;
 #[cfg(test)]
+mod eval;
+#[cfg(test)]
 mod hybrid;
 #[cfg(test)]
 mod multimodal;

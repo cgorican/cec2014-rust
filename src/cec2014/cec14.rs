@@ -95,7 +95,7 @@ impl Cec14 {
 
         let score = self.problem.eval(values, &self.o, &self.m, &self.s);
 
-        score * (self.problem.index() as f64) * 100.0
+        score // error relative to the optimum (f* = index * 100 is not added)
     }
 
     pub fn lb(&self) -> f64 {
